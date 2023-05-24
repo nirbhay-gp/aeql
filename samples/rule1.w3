@@ -1,0 +1,69 @@
+
+rule:debit_txn_cashback_5_per,priority=1
+    where
+        data::event_name eq 'm2p_debit_txn'
+    when
+        and 
+            data::txn_amount gt 100
+            data::txn_type  eq "ECOM"
+            or     
+                data::merchant_name eq "dominoes"
+                func::persons_first_txn(data::entity_id) eq true
+    what 
+        ctx::reward_percentage = func::dominoes_random_5percent_cashback(data.entity_id)
+
+        result::key       = "DEBIT_TXN:" + data::txn_id
+        result::amount    = data::txn_amount * ctx::reward_percentage
+        result::due_date  = time::'in 10 days'
+
+
+with
+    describe priority   1
+    describe name       "debit_txn_cashback"
+    store    seed_value 1.4
+where
+    event_name eq 'm2p_debit_txn'
+when
+    store is_persons_first_txn get persons_first_txn(data::entity_id)
+    all 
+        txn_amount      gt 100
+        txn_type        eq "ECOM"
+        any     
+            merchant_name                eq "dominos"
+            not use is_persons_first_txn eq true
+what    
+    store reward_percentage = func::dominoes_random_5percent_cashback(data.entity_id)
+    result key            = "DEBIT_TXN:" + data::txn_id
+    result amount         = txn_amount * use reward_percentage
+    result due_date       = time::'in 10 days'
+
+
+with
+    describe priority       1
+    describe name           "debit_txn_cashback"
+    describe description    "This is a test rule"
+    store    seed_value     1.4
+where
+    event_name eq 'm2p_debit_txn'
+when
+    store consider_txn_from   yield get_txn_date_start [entity_id]
+    store person.txn.is_first yield persons_first_txn  [entity_id, use consider_txn_from]
+    all 
+        txn_amount      gt 100
+        txn_type        eq "ECOM"
+        any     
+            merchant_name                eq "dominos"
+            not use is_persons_first_txn eq true
+what    
+    store  reward_percentage yield dominoes_random_5percent_cashback [entity_id]
+    result key               "DEBIT_TXN:" + txn_id
+    result amount            txn_amount * use reward_percentage
+    result due_date          time 'in 10 days'
+
+
+
+data::accessor data::event_name
+
+data_obj = data::
+result_obj = result::
+context_obj = context::
