@@ -67,3 +67,38 @@ data::accessor data::event_name
 data_obj = data::
 result_obj = result::
 context_obj = context::
+
+app.add_handler(RuleHandler())
+
+
+
+class RuleHandler_<slug_unique>():
+
+    meta_data = {
+        'priority': 1,
+        'name': 'rule_1',
+        'ctx_defaults': {
+
+        }
+    }
+    def __init__(self):
+        self.name = //
+
+    def selector(self, ctx, event):
+        // where related code
+    
+    def qualifier(self, ctx, event):
+        // when related code
+    
+    def result(self, ctx, event):
+        // what related code
+
+
+class RuleHandler():
+
+    def __init__(self, config):
+        self.__config = config
+
+
+
+describe name "10_per_cashback" -> "self.name={rule_name}" -> "self.name = \"10_per_casback"\"

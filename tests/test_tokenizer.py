@@ -32,10 +32,12 @@ def test_unspaced_math_expression_tokenization_3():
     assert tokens[1] == "-"
 
 def test_unspaced_group_expression_tokenization_3():
-    tokens = src.tokenizer.generate_token_list("(a-b)")
-    assert len(tokens) == 5
+    tokens = src.tokenizer.generate_token_list("(\"nirbhay\" + a-123)")
+    assert len(tokens) == 7
     assert tokens[0] == "("
-    assert tokens[1] == "a"
-    assert tokens[2] == "-"
-    assert tokens[3] == "b"
-    assert tokens[4] == ")"
+    assert tokens[1] == "\"nirbhay\""
+    assert tokens[2] == "+"
+    assert tokens[3] == "a"
+    assert tokens[4] == "-"
+    assert tokens[5] == "123"
+    assert tokens[6] == ")"

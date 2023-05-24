@@ -1,6 +1,9 @@
 import sys
 from src.tokenizer import generate_token_list, generate_labels
+from src.parser import parse
 from colorama import init, Fore, Style
+from pprint import pprint
+import json
 
 if __name__ == '__main__':
     init(autoreset=True)
@@ -16,3 +19,8 @@ if __name__ == '__main__':
         else:
             label = Style.NORMAL + Fore.WHITE + token[1]
         print("{}: {}".format(value, label))
+        
+    tokens = parse(tokens)
+    
+    print(json.dumps(tokens['with'][1], indent=2))
+    print(json.dumps(tokens['where'][1], indent=2))

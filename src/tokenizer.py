@@ -93,6 +93,7 @@ def generate_second_level_labels(tokens):
                 token.append("kw_cache_store")
             if(token[0] == kw_tokens.kw_cache_use):
                 token.append("kw_cache_use")
+                
         if rules.string_literal.fullmatch(token):
             tokens_with_labels.append([token, "string_literal"])
         elif rules.int_literal.fullmatch(token):
@@ -123,7 +124,6 @@ def generate_labels(tokens):
 
 def tokenizer(code_str: "str"):
     tokens = generate_token_list(code_str)
-        
         
         
         
