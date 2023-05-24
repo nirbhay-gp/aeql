@@ -1,6 +1,7 @@
-### What is werlang?
+# a=eql
 
-werlang is a sql inspired expression language, with the goal to build a complete programming feature set for business users to write rules and procedures.
+### What is aeql?
+aeql is a sql inspired expression language, with the goal to build a complete programming feature set for business users to write rules and procedures.
 
 
 ### An example rule
