@@ -1,0 +1,16 @@
+from addict import Dict
+
+class RuleHandler_$slug:
+    def __init__(self):
+        self.context = Dict()
+        $describe
+        $store
+    
+    def selector(self):
+        pass
+    
+    def qualifier(self):
+        pass
+
+    def result(self):
+        pass
