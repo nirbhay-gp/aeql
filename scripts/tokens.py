@@ -22,5 +22,7 @@ if __name__ == '__main__':
         
     tokens = parse(tokens)
     
-    print(json.dumps(tokens['with'][1], indent=2))
-    print(json.dumps(tokens['where'][1], indent=2))
+    # print(json.dumps(tokens['with'][1], indent=2))
+    # print(json.dumps(tokens['where'][1], indent=2))
+    for elem in tokens['where'][1]:
+        elem.str("")

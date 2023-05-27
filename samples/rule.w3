@@ -10,6 +10,9 @@ where
             all 
                 event_type eq 'ecom'
                 event_region eq 'mumbai'
+                any     
+                    merchant_name                eq "dominos"
+                    not is_persons_first_txn eq true
 when
     store consider_txn_from   yield get_txn_date_start [entity_id]
     store person.txn.is_first yield persons_first_txn  [entity_id, use consider_txn_from]
