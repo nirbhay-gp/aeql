@@ -14,11 +14,11 @@ class data_(Variable):
         return self.__registry
     
     @classmethod
-    def set_registry(cls, registry):
+    def bind(cls, registry):
         cls.__registry = registry
         
 
-class use_(Variable):
+class context_(Variable):
     
     def __init__(self, name: str):
         super().__init__('use', name)
@@ -32,5 +32,5 @@ class use_(Variable):
         return self.__registry
     
     @classmethod
-    def set_registry(cls, registry):
+    def bind(cls, registry):
         cls.__registry = registry

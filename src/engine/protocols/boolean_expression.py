@@ -9,11 +9,11 @@ class BooleanExpression(metaclass=ABCMeta):
 
     @property
     def left_operand(self):
-        return self.__parameters[0].value()
+        return self.__parameters[0].value
 
     @property
     def right_operand(self):
-        self.__parameters[0].value()
+        self.__parameters[0].value
 
     @abstractproperty
     def value(self):

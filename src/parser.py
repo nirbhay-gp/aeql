@@ -10,6 +10,10 @@ class Node:
     type: str
     attributes: List["Token"]
     
+    @property
+    def is_leaf(self):
+        return len(self.attributes) < 0
+    
     def str(self, spacer):
         node_string = "Node({}): {}".format(self.type, self.value)
         print(spacer + "  "+ node_string)
@@ -85,7 +89,7 @@ def generate_yield_expression(token_blocks, counter):
     if rules.is_group_operator_char(params_group_left_separator):
         right_counter = counter+2
         while params_group_right_separator is None and right_counter < len(token_blocks):
-            
+            pass
         
     if len(token_blocks) >= counter+2:
         params_group_separator = token_blocks[counter+2]
@@ -198,12 +202,12 @@ def generate_ast(token_blocks, counter):
 
 def parse(tokens):
     token_blocks = create_blocks(tokens)
-    with_result = generate_ast(token_blocks["with"], 0)
+    # with_result = generate_ast(token_blocks["with"], 0)
     where_result = generate_ast(token_blocks["where"], 0)
-    when_result = generate_ast(token_blocks["when"], 0)
+    # when_result = generate_ast(token_blocks["when"], 0)
     return {
-        'with': with_result,
+        # 'with': with_result,
         'where': where_result,
-        'when': when_result
+        # 'when': when_result
     }
         

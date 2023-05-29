@@ -25,5 +25,5 @@ class Variable(metaclass=ABCMeta):
         pass
     
     @abstractclassmethod
-    def set_registry(cls, registry):
+    def bind(cls, registry):
         pass
