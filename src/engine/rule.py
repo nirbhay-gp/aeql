@@ -16,7 +16,7 @@ def generate_expression_tree(node: "Union[Node,List[Node]]"):
         if node.value == "all":
             return components.all_(operands)
         if node.value == "any":
-            return components.all_(operands)
+            return components.any_(operands)
         if node.value == "not":
             return components.not_(operands)
         if node.value == "eq":
@@ -24,11 +24,11 @@ def generate_expression_tree(node: "Union[Node,List[Node]]"):
         if node.value == "gte":
             return components.gte_(operands)
         if node.value == "gt":
-            return components.gte_(operands)
+            return components.gt_(operands)
         if node.value == "lte":
-            return components.gte_(operands)
+            return components.lte_(operands)
         if node.value == "lt":
-            return components.gte_(operands)
+            return components.lt_(operands)
     elif node.type == "math_operator":
         if node.value == "+":
             return components.add_(operands)

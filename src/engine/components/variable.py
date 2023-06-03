@@ -19,6 +19,10 @@ class data_(Variable):
         
 
 class context_(Variable):
+    """
+    context variable which represents objects that have lifespan of
+    a rule execution
+    """
     
     def __init__(self, name: str):
         super().__init__('use', name)

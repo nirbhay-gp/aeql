@@ -5,7 +5,7 @@ from src.engine.protocols import MathExpression
 class add_(MathExpression):
     
     def __init__(self, *args):
-        super().__init__('add', args)
+        super().__init__('add', *args)
     
     @property
     def value(self):
@@ -15,7 +15,7 @@ class add_(MathExpression):
 class subtract_(MathExpression):
     
     def __init__(self, *args):
-        super().__init__('subtract', args)
+        super().__init__('subtract', *args)
     
     @property
     def value(self):
@@ -25,7 +25,7 @@ class subtract_(MathExpression):
 class divide_(MathExpression):
     
     def __init__(self, *args):
-        super().__init__('divide', args)
+        super().__init__('divide', *args)
     
     @property
     def value(self):
@@ -35,7 +35,7 @@ class divide_(MathExpression):
 class multiply_(MathExpression):
     
     def __init__(self, *args):
-        super().__init__('multiply', args)
+        super().__init__('multiply', *args)
         
     @property
     def value(self):
@@ -45,7 +45,7 @@ class multiply_(MathExpression):
 class exponent_(MathExpression):
     
     def __init__(self, *args):
-        super().__init__('exponent', args)
+        super().__init__('exponent', *args)
         
     @property
     def value(self):
