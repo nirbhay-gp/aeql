@@ -8,12 +8,16 @@ class BooleanExpression(metaclass=ABCMeta):
         self.__parameters = args
 
     @property
+    def type(self):
+        return self.__operator
+    
+    @property
     def left_operand(self):
         return self.__parameters[0].value
 
     @property
     def right_operand(self):
-        self.__parameters[0].value
+        return self.__parameters[1].value
 
     @abstractproperty
     def value(self):
@@ -25,6 +29,10 @@ class BooleanCombinator(metaclass=ABCMeta):
         self.__combinator = combinator
         self.__parameters = args
 
+    @property
+    def type(self):
+        return self.__combinator
+    
     @property
     def operands(self):
         for operand in self.__parameters:

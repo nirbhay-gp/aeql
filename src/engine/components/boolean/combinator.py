@@ -3,20 +3,20 @@ from src.engine.protocols import BooleanCombinator
 
 class all_(BooleanCombinator):
     def __init__(self, *args):
-        super().__init__('all', *args)
-        
+        super().__init__("all", *args)
+
     @property
     def value(self):
         for operand in self.operands:
             if operand == False:
                 return False
+        return True
 
 
 class any_(BooleanCombinator):
-    
     def __init__(self, *args):
-        super().__init__('any', *args)
-    
+        super().__init__("any", *args)
+
     @property
     def value(self):
         for operand in self.operands:
